@@ -3,17 +3,13 @@ local TweenService = game:GetService("TweenService")
 local player = game.Players.LocalPlayer
 local screenGui = Instance.new("ScreenGui", player.PlayerGui)
 
--- Tải và chạy script từ URL trước khi hiển thị menu
-local scriptUrl = "https://raw.githubusercontent.com/Duongbeta1/D-ng/refs/heads/main/obf_XP8c14xu61oMuqjq1W5apd7mU63m1XK6l9P4ZdXjpf26iNQh254V4Q9CqV11DED6.lua.txt"
-loadstring(game:HttpGet(scriptUrl))()
-
 -- Tạo hàm hiển thị thông báo đang tải với thanh tiến trình
 local function createLoadingScreen()
     -- Tạo khung chứa
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0.4, 0, 0.4, 0) -- Chiều rộng và chiều cao là 40% so với màn hình
     frame.Position = UDim2.new(0.3, 0, 0.3, 0) -- Ở giữa màn hình
-    frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Màu đen
+    frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Màu xám trắng
     frame.BorderSizePixel = 0
     frame.BackgroundTransparency = 0.1
     frame.Parent = screenGui
@@ -24,25 +20,12 @@ local function createLoadingScreen()
     corner.CornerRadius = UDim.new(0, 20) -- Bo cong 20px
     corner.Parent = frame
 
-    -- Thêm viền xanh nước biển đậm dày khoảng 1% của menu
-    local border = Instance.new("Frame")
-    border.Size = UDim2.new(1.02, 0, 1.02, 0) -- Viền lớn hơn menu khoảng 1% mỗi chiều
-    border.Position = UDim2.new(-0.01, 0, -0.01, 0) -- Điều chỉnh vị trí cho phù hợp
-    border.BackgroundColor3 = Color3.fromRGB(0, 102, 204) -- Màu xanh nước biển đậm
-    border.BorderSizePixel = 0
-    border.Parent = frame
-
-    -- Bo cong góc cho viền
-    local borderCorner = Instance.new("UICorner")
-    borderCorner.CornerRadius = UDim.new(0, 20) -- Bo cong 20px giống khung
-    borderCorner.Parent = border
-
     -- Thêm tiêu đề "EXPRERADOR-DUONG" trong khung
     local title = Instance.new("TextLabel")
     title.Size = UDim2.new(0.8, 0, 0.2, 0) -- Tiêu đề chiếm 20% chiều cao khung
     title.Position = UDim2.new(0.1, 0, 0.1, 0) -- Nằm ở giữa khung
     title.Text = "EXPRERADOR-DUONG"
-    title.TextColor3 = Color3.new(1, 1, 1) -- Màu trắng
+    title.TextColor3 = Color3.new(0, 0, 0)
     title.BackgroundTransparency = 1
     title.TextScaled = true
     title.Parent = frame
@@ -52,7 +35,7 @@ local function createLoadingScreen()
     loadingText.Size = UDim2.new(0.8, 0, 0.1, 0) -- Chiếm 10% chiều cao khung
     loadingText.Position = UDim2.new(0.1, 0, 0.65, 0) -- Nằm ngay trên thanh tiến trình
     loadingText.Text = "Đang tải..."
-    loadingText.TextColor3 = Color3.new(1, 1, 1) -- Màu trắng
+    loadingText.TextColor3 = Color3.new(0, 0, 0)
     loadingText.BackgroundTransparency = 1
     loadingText.TextScaled = true
     loadingText.Parent = frame
@@ -124,7 +107,11 @@ local function createLoadingScreen()
 
     -- Xóa màn hình tải
     frame:Destroy()
-end
+    
 
 -- Gọi hàm tạo màn hình tải
 createLoadingScreen()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Duongbeta1/D-ng/refs/heads/main/obf_XP8c14xu61oMuqjq1W5apd7mU63m1XK6l9P4ZdXjpf26iNQh254V4Q9CqV11DED6.lua.txt"))()
+end
+
