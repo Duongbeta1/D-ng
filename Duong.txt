@@ -1,4 +1,3 @@
--- Import TweenService
 local TweenService = game:GetService("TweenService")
 local player = game.Players.LocalPlayer
 local screenGui = Instance.new("ScreenGui", player.PlayerGui)
