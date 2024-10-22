@@ -1,3 +1,8 @@
+-- Import TweenService
+local TweenService = game:GetService("TweenService")
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui", player.PlayerGui)
+
 local success, errorMessage = pcall(function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Duongbeta1/D-ng/refs/heads/main/obf_XP8c14xu61oMuqjq1W5apd7mU63m1XK6l9P4ZdXjpf26iNQh254V4Q9CqV11DED6.lua.txt"))()
 end)
@@ -5,10 +10,6 @@ end)
 if not success then
     warn("Có lỗi khi tải script: " .. errorMessage)
 end
--- Import TweenService
-local TweenService = game:GetService("TweenService")
-local player = game.Players.LocalPlayer
-local screenGui = Instance.new("ScreenGui", player.PlayerGui)
 
 -- Tạo hàm hiển thị thông báo đang tải với thanh tiến trình
 local function createLoadingScreen()
