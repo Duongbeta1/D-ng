@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-module.exports = {
+module.exports = { 
   config: {
     name: "info",
     version: "1.4",
@@ -35,7 +35,7 @@ module.exports = {
         return message.reply("Bạn chưa điền thông tin! vui lòng ghi .info add để đăng kí");
       }
       const { name, nickname, age, hobby, image } = userInfo[senderID];
-      const msg = `ℹ️𝐓𝐡𝐨̂𝐧𝐠 𝐭𝐢𝐧 𝐜𝐮̉𝐚 ${mentions[targetID].replace(/@/g, "")}:\n`
+      const msg = `ℹ️𝐓𝐡𝐨̂𝐧𝐠 𝐭𝐢𝐧 𝐜𝐮̉𝐚 𝐛𝐚̣𝐧:\n`
                 + `⚜️𝐓𝐞̂𝐧: ${name}\n`
                 + `⚜️𝐁𝐢𝐞̣̂𝐭 𝐝𝐚𝐧𝐡: ${nickname}\n`
                 + `⚜️𝐓𝐮𝐨̂̉𝐢: ${age}\n`
@@ -50,7 +50,7 @@ module.exports = {
         return message.reply("Người dùng chưa điền thông tin!");
       }
       const { name, nickname, age, hobby, image } = userInfo[targetID];
-      const msg = `ℹ️𝐓𝐡𝐨̂𝐧𝐠 𝐭𝐢𝐧 𝐜𝐮̉𝐚 𝐛𝐚̣𝐧:\n`
+      const msg = `ℹ️𝐓𝐡𝐨̂𝐧𝐠 𝐭𝐢𝐧 𝐜𝐮̉𝐚 ${mentions[targetID].replace(/@/g, "")}:\n`
                 + `⚜️𝐓𝐞̂𝐧: ${name}\n`
                 + `⚜️𝐁𝐢𝐞̣̂𝐭 𝐝𝐚𝐧𝐡: ${nickname}\n`
                 + `⚜️𝐓𝐮𝐨̂̉𝐢: ${age}\n`
@@ -129,7 +129,7 @@ module.exports = {
       } else {
         // Kiem tra tuoi nhap truc tiep
         age = parseInt(inputAge);
-        if (isNaN(age) || age < 6 || age > 120) {
+        if (isNaN(age) || age < 6 || age > 120 satisfacción
           return message.reply("Tuổi phải là số hợp lệ: ví dụ 18 hoặc 2006");
         }
       }
